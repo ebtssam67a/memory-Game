@@ -5,6 +5,8 @@ const cardArray = ['fa-anchor','fa-bolt','fa-leaf', 'fa-bomb','fa-bolt','fa-diam
     
 // Set global variables for the DOM
 const deck = document.querySelector(".deck");
+const fa = document.querySelector(".x");
+
 const moves = document.querySelector(".moves");
 const playAgain = document.querySelector(".playAgain");
 const restart = document.querySelector(".restart");
@@ -162,7 +164,7 @@ playAgain.addEventListener("click", function() {
 })
 
 // event listener for starting the game from card 
-deck.addEventListener("click", function(event) {
+deck.addEventListener("click",function(event) {
 	
 	let card = event.target;
 	// start timer
@@ -173,11 +175,12 @@ deck.addEventListener("click", function(event) {
 	}
 
 	// for closed cards
-	if (!card.classList.contains("open")) {
+	if (!card.classList.contains("open") && !card.classList.contains("fa")) {
 
 		if (openCards.length < 2) {
 				showCard(card);
 				openCards.push(card);
+				
 		}
 		if (openCards.length === 2) {
 			if (openCards[0].innerHTML === openCards[1].innerHTML) {
